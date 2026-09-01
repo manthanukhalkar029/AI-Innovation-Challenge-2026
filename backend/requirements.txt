@@ -1,0 +1,18 @@
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+python-multipart==0.0.9
+pydantic==2.9.2
+
+# Document parsing
+pypdf==4.3.1
+python-docx==1.1.2
+python-pptx==1.0.2
+
+# Chunking + embeddings + vector store
+sentence-transformers==3.1.1
+chromadb==0.5.5
+
+# LLM
+anthropic==0.34.2
+
+python-dotenv==1.0.1
