@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Teacher</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <h1>🎓 AI Teacher</h1>
+  <p class="tagline">Upload material or name a topic. Get a personalized, adaptive video lesson - not a chatbot.</p>
+  <span id="provider-badge" class="badge"></span>
+</header>
+
+<main>
+  <section class="card" id="setup-card">
+    <h2>1. What should the lesson be about?</h2>
+    <div class="row">
+      <div class="field">
+        <label>Upload material (PDF / DOCX / PPTX / TXT)</label>
+        <input type="file" id="file-input" accept=".pdf,.docx,.pptx,.txt,.md">
+        <div id="upload-status" class="hint"></div>
+      </div>
+      <div class="field">
+        <label>...or type a topic directly</label>
+        <input type="text" id="topic-input" placeholder="e.g. Newton's Laws of Motion">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Learner level</label>
+        <select id="level-select">
+          <option value="beginner">Beginner</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="advanced">Advanced</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Time available</label>
+        <select id="minutes-select">
+          <option value="5">5 minutes</option>
+          <option value="20" selected>20 minutes</option>
+          <option value="60">60 minutes</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Teaching language</label>
+        <select id="language-select">
+          <option>English</option>
+          <option>Hindi</option>
+          <option>Hinglish</option>
+          <option>Spanish</option>
+          <option>French</option>
+          <option>Marathi</option>
+          <option>Tamil</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Student ID</label>
+        <input type="text" id="student-id" value="guest" placeholder="your name / id">
+      </div>
+    </div>
+    <button id="plan-btn">Generate Lesson Plan</button>
+  </section>
+
+  <section class="card hidden" id="lesson-card">
+    <h2 id="lesson-title">2. Your Lesson</h2>
+    <div id="objectives"></div>
+    <button id="video-btn">🎬 Generate Teaching Video</button>
+    <div id="video-status" class="hint"></div>
+    <video id="lesson-video" controls class="hidden"></video>
+    <div id="sections"></div>
+  </section>
+
+  <section class="card hidden" id="quiz-card">
+    <h2>3. Assessment</h2>
+    <button id="quiz-btn">Generate End-of-Lesson Quiz</button>
+    <div id="quiz-body"></div>
+    <button id="submit-quiz-btn" class="hidden">Submit Answers</button>
+    <div id="report"></div>
+  </section>
+
+  <section class="card hidden" id="profile-card">
+    <h2>4. Your Learning Profile</h2>
+    <div id="profile-body"></div>
+  </section>
+</main>
+
+<script src="/app.js"></script>
+</body>
+</html>

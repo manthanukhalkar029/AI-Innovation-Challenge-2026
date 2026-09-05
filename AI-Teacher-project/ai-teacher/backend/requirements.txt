@@ -1,0 +1,54 @@
+# Core web app
+Flask==3.1.3
+Werkzeug>=3.0
+
+# Document ingestion
+python-docx>=1.1.0
+python-pptx>=0.6.23
+pypdf>=4.0.0
+pdfplumber>=0.11.0
+
+# RAG (offline TF-IDF retrieval - swap for sentence-transformers for dense embeddings)
+scikit-learn>=1.4.0
+numpy>=1.26.0
+
+# Media generation
+Pillow>=10.0.0
+matplotlib>=3.8.0
+# ffmpeg must be installed as a system binary (not pip-installable):
+#   Ubuntu/Debian: sudo apt install ffmpeg
+#   macOS:         brew install ffmpeg
+#   Windows:       https://ffmpeg.org/download.html
+
+# Text-to-speech (this is what actually puts sound in the teaching video -
+# without one of these installed, narrate() has nothing to fall back to
+# but silence). pyttsx3 is enabled by default because it's fully offline
+# and needs no API key/internet, which matters most on demo day.
+pyttsx3>=2.90                # Offline TTS (Linux also needs: sudo apt install espeak-ng)
+gTTS>=2.5.0                  # Free online TTS, better voice quality (needs internet)
+
+# Speech-to-text (lets a student answer checkpoint questions by voice
+# instead of typing - section 16 technology list). Offline by default,
+# no API key needed; set OPENAI_API_KEY to use the hosted Whisper API
+# instead for higher accuracy.
+faster-whisper>=1.0.0
+
+# RAG upgrade: dense embeddings + real vector database (see EMBEDDING_BACKEND
+# in .env.example). Optional - the app still runs on the offline TF-IDF
+# retriever with none of this installed.
+sentence-transformers>=3.0.0
+faiss-cpu>=1.8.0
+
+# Computer Vision: extracts embedded images/diagrams/scanned pages from
+# uploaded PDF/DOCX/PPTX and OCRs them, so text baked into an image isn't
+# invisible to the RAG index. Also needs the Tesseract OCR system binary:
+#   Ubuntu/Debian: sudo apt install tesseract-ocr
+#   macOS:         brew install tesseract
+#   Windows:       https://github.com/UB-Mannheim/tesseract/wiki
+pytesseract>=0.3.10
+
+# --- Optional, only needed if you enable the corresponding provider ---
+# anthropic>=0.40.0          # LLM: set ANTHROPIC_API_KEY
+# openai>=1.50.0             # LLM: set OPENAI_API_KEY
+# azure-cognitiveservices-speech>=1.38.0   # TTS: set AZURE_SPEECH_KEY
+# requests>=2.31.0           # needed by ElevenLabs/Ollama providers (usually already present)

@@ -1,0 +1,24 @@
+# Environment / secrets
+.env
+*.pem
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# Runtime data (uploads, generated videos, session indexes, profile DB)
+backend/data/uploads/*
+backend/data/sessions/*
+backend/data/videos/*
+backend/data/profiles.db
+!backend/data/uploads/.gitkeep
+!backend/data/sessions/.gitkeep
+!backend/data/videos/.gitkeep
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
